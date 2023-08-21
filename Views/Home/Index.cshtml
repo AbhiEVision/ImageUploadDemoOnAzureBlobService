@@ -1,0 +1,48 @@
+﻿@model DemoPractical.ImageDemo.Models.ImageModel
+
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Upload Image Here</h1>
+	<p>
+		@using(Html.BeginForm("SavePicture","Home",FormMethod.Post,new { enctype = "multipart/form-data" }))
+		{
+			@Html.AntiForgeryToken()
+
+			<div class="form-group">
+				@Html.LabelFor(m => m.FileDetails, new { @class = "form-label"})
+				@Html.EditorFor(m => m.File, new { @class = "form-control"})
+
+			</div>
+
+			<button type="submit" class="btn btn-primary"> Upload </button>
+		}
+
+
+
+	</p>
+	<br />
+	<div>
+		@if (ViewBag.ErrorMessage != null)
+		{
+			<h4 class="text-danger">@ViewBag.ErrorMessage</h4>
+		}
+	</div>
+	<div>
+		@if(ViewBag.ImageUrl != null)
+		{
+			<h4 class="text-capitalize">
+				Image
+			</h4>
+			<img src="@ViewBag.ImageUrl"/>
+		}
+		else
+		{
+			<h3>No Image Uploaded!</h3>
+		}
+	</div>
+</div>
+
+
