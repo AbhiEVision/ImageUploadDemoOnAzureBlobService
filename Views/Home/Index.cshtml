@@ -7,19 +7,19 @@
 <div class="text-center">
 	<h3 class="display-4">Upload Image Here</h3>
 	<p>
-		@using(Html.BeginForm("SavePicture","Home",FormMethod.Post,new { enctype = "multipart/form-data" }))
+		@using (Html.BeginForm("SavePicture", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "" }))
 		{
 			@Html.AntiForgeryToken()
 
-			<div class="form-group">
-				@Html.LabelFor(m => m.FileDetails, new { @class = "form-label"})
-				@Html.EditorFor(m => m.File, new { @class = "form-control"})
+			<div class="form-group ">
+				<br/>
+				@Html.EditorFor(m => m.File, new { @class = "form-control border mt-1", @type= "file"})
 
 			</div>
 
-			<button type="submit" class="btn btn-primary"> Upload </button>
-		}
+			<button type="submit" class="btn btn-primary mt-3"> Upload </button>
 
+		}
 
 
 	</p>
@@ -34,9 +34,9 @@
 		@if(ViewBag.ImageUrl != null)
 		{
 			<h4 class="text-capitalize">
-				Image
+				Image which you have uploaded
 			</h4>
-			<img src="@ViewBag.ImageUrl"/>
+			<img src="@ViewBag.ImageUrl" width="500px" height="500px"/>
 		}
 		else
 		{

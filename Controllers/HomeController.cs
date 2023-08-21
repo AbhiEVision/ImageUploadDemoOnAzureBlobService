@@ -10,7 +10,7 @@ namespace DemoPractical.ImageDemo.Controllers
 		private readonly ILogger<HomeController> _logger;
 		private readonly IImageService _imageService;
 		private readonly string _baseUrl = "https://imagestoredemoonblob.blob.core.windows.net/demo-image-store/";
-		private static string currImageUrl = null;
+		private string currImageUrl = null;
 
 		public HomeController(ILogger<HomeController> logger, IImageService imageService = null)
 		{
